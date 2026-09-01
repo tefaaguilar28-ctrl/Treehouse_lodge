@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurea Grand Hotel & Suites</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0D131A;
+            --secondary: #C5A059;
+            --text-light: #F4F4F4;
+            --text-dark: #222222;
+            --bg-light: #F9F8F6;
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header / Navegación */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(13, 19, 26, 0.95);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--secondary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(13, 19, 26, 0.6), rgba(13, 19, 26, 0.8)), 
+                        url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 40px;
+        }
+
+        /* Formulario de Reserva */
+        .booking-bar {
+            background-color: var(--primary);
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            border-top: 2px solid var(--secondary);
+        }
+
+        .booking-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .booking-group label {
+            color: var(--secondary);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .booking-group input, .booking-group select {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            color: var(--text-light);
+            font-family: var(--font-sans);
+        }
+
+        .btn {
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 12px 30px;
+            border: none;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.3s;
+            align-self: flex-end;
+        }
+
+        .btn:hover {
+            background-color: #d4af66;
+        }
+
+        /* Secciones Generales */
+        .section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--primary);
+        }
+
+        .section-header div {
+            width: 50px;
+            height: 1px;
+            background-color: var(--secondary);
+            margin: 15px auto 0;
+        }
+
+        /* Grid de Habitaciones */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .room-card {
+            background: #fff;
+            border: 1px solid #EAEAEA;
+        }
+
+        .room-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .room-info {
+            padding: 30px;
+        }
+
+        .room-info h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .room-info p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .room-price {
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: 60px 50px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            flex-wrap: wrap;
+            gap: 30px;
+            text-align: left;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-serif);
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-col p {
+            font-size: 0.85rem;
+            color: #aaa;
+            font-weight: 300;
+        }
+
+        .copyright {
+            font-size: 0.75rem;
+            color: #666;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 20px; }
+            .hero h1 { font-size: 2.5rem; }
+            .booking-bar { flex-direction: column; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">TREEHOUSE LODGE</div>
+        <nav>
+            <a href="#habitaciones">Habitaciones</a>
+            <a href="#experiencia">Experiencia</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>DISTINCIÓN Y CONFORT</h1>
+        <p>Una experiencia de hospitalidad inigualable</p>
+    </section>
+
+    <div class="booking-bar">
+        <div class="booking-group">
+            <label>Llegada</label>
+            <input type="date">
+        </div>
+        <div class="booking-group">
+            <label>Salida</label>
+            <input type="date">
+        </div>
+        <div class="booking-group">
+            <label>Huéspedes</label>
+            <select>
+                <option>1 Adulto</option>
+                <option>2 Adultos</option>
+                <option>Suite Familiar</option>
+            </select>
+        </div>
+        <button class="btn">Consultar Disponibilidad</button>
+    </div>
+
+    <section class="section" id="habitaciones">
+        <div class="section-header">
+            <h2>Nuestras Suites</h2>
+            <div></div>
+        </div>
+
+        <div class="rooms-grid">
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80" alt="Executive Suite">
+                <div class="room-info">
+                    <h3>Executive Suite</h3>
+                    <p>Diseñada para el viajero de negocios o parejas que buscan elegancia sobria y espacios de trabajo optimizados.</p>
+                    <span class="room-price">DESDE $280 / NOCHE</span>
+                </div>
+            </div>
+
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Grand Deluxe">
+                <div class="room-info">
+                    <h3>Grand Deluxe</h3>
+                    <p>Amplitud con vistas panorámicas a la ciudad, acabados en mármol y servicio de mayordomo privado.</p>
+                    <span class="room-price">DESDE $420 / NOCHE</span>
+                </div>
+            </div>
+
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80" alt="Presidential Suite">
+                <div class="room-info">
+                    <h3>Presidential Suite</h3>
+                    <p>La cúspide del lujo. Comedor privado, terraza exclusiva y atención personalizada las 24 horas.</p>
+                    <span class="room-price">DESDE $850 / NOCHE</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Aurea Grand Hotel</h4>
+                <p>Av. Principal 123, Distrito Financiero<br>Ciudad, País</p>
+            </div>
+            <div class="footer-col">
+                <h4>Reservaciones</h4>
+                <p>Tel: +00 123 456 789<br>contacto@aureagrandhotel.com</p>
+            </div>
+            <div class="footer-col">
+                <h4>Atención</h4>
+                <p>Recepción 24/7<br>Concierge Privado</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Aurea Grand Hotel & Suites. Todos los derechos reservados.
+        </div>
+    </footer>
+
+</body>
+</html>
